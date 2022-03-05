@@ -15,6 +15,7 @@
 // Arms                 motor_group   1, 10           
 // Pump                 digital_out   A               
 // TestMotor            motor         16              
+// Tail                 motor         18              
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -38,6 +39,8 @@ competition Competition;
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
 
+int AutonType = 1;
+
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
@@ -57,7 +60,23 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
-  
+  if (AutonType == 1){
+    DriveForward();
+    ClawDown();
+    DriveBackward();
+
+    TurnLeft();
+    ArmsUp(1.0);
+    DriveForward();
+
+    ClawDown();
+    TurnRight();
+    ArmsDown(1.0);
+    
+    DriveForward(2.0);
+    ClawDown();
+    DriveBackward(2.0);
+  }
 }
 
 /*---------------------------------------------------------------------------*/
@@ -101,6 +120,21 @@ void usercontrol(void) {
     Arms.spin(directionType::fwd);
 
     //Arms.spin(directionType::fwd, armVelocity, velocityUnits::pct);
+
+    if (Controller1.ButtonL1.pressing()){
+      Tail.setVelocity(100.0, pct);
+      Tail.spin(forward);
+    }
+    else{
+      Tail.setVelocity(0.0, pct);
+    }
+    if (Controller1.ButtonL2.pressing()){
+      Tail.setVelocity(100.0, pct);
+      Tail.spin(forward);
+    }
+    else{
+      Tail.setVelocity(0.0, pct);
+    }
 
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.

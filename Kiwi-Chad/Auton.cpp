@@ -17,6 +17,14 @@ void TurnLeft(){
   Drivetrain.turnFor(-90.0, rotationUnits::deg, true);
 }
 
+void ArmsUp(double seconds){
+  Arms.spinFor(seconds, timeUnits::sec);
+}
+
+void ArmsDown(double seconds){
+  Arms.spinFor(seconds, timeUnits::sec);
+}
+
 void ClawDown(){
   Pump.set(true);
 }
