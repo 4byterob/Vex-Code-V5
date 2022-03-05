@@ -77,6 +77,23 @@ void autonomous(void) {
     ClawDown();
     DriveBackward(2.0);
   }
+  else if(AutonType == 2){
+    TurnRight();
+    DriveForward();
+
+    TurnLeft();
+    DriveForward(2.0);
+
+    ClawDown();
+    DriveBackward();
+
+    TurnRight();
+    ArmsUp(1.0);
+    DriveForward(1.5);
+
+    TurnRight();
+    DriveForward(0.2);
+  }
 }
 
 /*---------------------------------------------------------------------------*/
