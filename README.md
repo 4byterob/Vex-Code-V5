@@ -1,5 +1,5 @@
-# Vex-Mess
-Spaghetti Code les gooooo
+# Vex-Code
+VexCodeV5 Code for the Robotics Competitions
 ---
 Ok so the only file that really matters is the 'main.cpp' one.
 
